@@ -1,0 +1,30 @@
+.field {
+  position: relative;
+}
+
+fieldset > * {
+  margin-top: 22px;
+}
+
+label {
+  position: absolute;
+  left: 0;
+  top: 0px;
+}
+
+input:focus + label {
+  top: -20px;
+}
+
+/* input:not(:-ms-input-placeholder) + label doesent work for Edge, so we need to use js class to recognize empty input */
+
+.field.isFilled input + label {
+  top: -20px;
+}
+
+/* moving label above autofilled input on Chrome, using supports hack for Chrome, because it breaks styles in FF 73.0.1 */
+@supports (-webkit-appearance:none) {
+  input:-webkit-autofill + label {
+    top: -20px;
+  }
+}
